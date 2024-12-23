@@ -88,15 +88,16 @@ src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWe
 <!-- Helper Script -->
 <script>
     let OTPlessSignin = null;
+    const getqueryParam = (param) => (new URLSearchParams(window.location.search)).get(param)
     async function OTPlessSdk() {
             return new Promise(async (resolve) => {
 
                 if (document.getElementById('otpless-sdk') && OTPlessSignin) return resolve();
-
+                const appId = getquerParam("appId") || "4ULZ8ZIE096DPDSX64B0";
                 const script = document.createElement('script');
-                script.src = "https://otpless.tech/v3/headless.js";
+                script.src = "https://otpless.com/v4/headless.js";
                 script.id = "otpless-sdk";
-                script.setAttribute('data-appid', '4ULZ8ZIE096DPDSX64B0');
+                script.setAttribute('data-appid', appId);
                 script.onload = function () {
                     const OTPless = Reflect.get(window, "OTPless")
                     OTPlessSignin = new OTPless(callback);
@@ -249,93 +250,3 @@ src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWe
     localStorage.setItem("userId", "e45e5ae5ba8711ee9cbe02e825e2ea5c")
     OTPlessSdk();
 </script>
-
-<div id="loom-companion-mv3" ext-id="liecbddmkiiihnedobmlmillhodjkdmb"><section id="shadow-host-companion"></section></div><style id="otpless-loader-style" type="text/css">
-@keyframes otpless-spinner {
-0% {
-  transform: rotate(0deg);
-}
-
-100% {
-  transform: rotate(360deg);
-}
-}
-
-.animated {
--webkit-animation-duration: 0.5s;
-animation-duration: 0.5s;
--webkit-animation-fill-mode: backwards;
-animation-fill-mode: backwards;
-}
-
-@-webkit-keyframes fadeOutRight {
-from {
-    opacity: 1;
-}
-
-to {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-}
-}
-
-@keyframes fadeOutRight {
-from {
-    opacity: 1;
-}
-
-to {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-}
-}
-
-.fadeOutRight {
--webkit-animation-name: fadeOutRight;
-animation-name: fadeOutRight;
-}
-
-@-webkit-keyframes fadeInRight {
-from {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-}
-
-to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-}
-
-@keyframes fadeInRight {
-from {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-}
-
-to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-}
-
-.fadeInRight {
--webkit-animation-name: fadeInRight;
-animation-name: fadeInRight;
-}
-</style><div id="otpless-floating-button" style="top: 70px; right: 30px; width: 385px;
-position: fixed;
-box-shadow: 0 1px 2px 0 rgba(65,69,73,.3), 0 3px 6px 2px rgba(65,69,73,.15);
-background: #FFF;
-transition: all 0.5s ease-in-out;
-font-size: 14px;
-z-index: 99999999999999999999999;
-opacity: 0; pointer-events: none;">
-
-<!-- <iframe id="otpless-floating-frame" style="width: 100%; border: none; height: 100%; border-radius: 12px; z-index: 1; opacity: 1;" loading="eager" src="https://otpless.tech/v3/auth/index.html?login_uri=https%3A%2F%2Ffinixpartners.com%2Fv3-test%2Fhl.html%3FappId%3DOVZENUJP21610DC09RDD&amp;isLoginPage=false&amp;isHeadless=true&amp;sdkPlatform=HEADLESS&amp;appId=OVZENUJP21610DC09RDD"></iframe></div></body></html> -->
